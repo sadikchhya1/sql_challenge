@@ -53,8 +53,7 @@ SELECT employees.emp_no, employees.last_name, employees.first_name, departments.
 		JOIN departments 
 		ON dept_emp.dept_no = departments.dept_no
 		WHERE departments.dept_name in ('Sales', 'Development')
-		--WHERE departments.dept_name = 'Sales'
-		--OR departments.dept_name = 'Developement'
+
 		ORDER BY dept_name 
 
 
