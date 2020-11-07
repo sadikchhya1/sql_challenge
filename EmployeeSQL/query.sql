@@ -15,11 +15,13 @@ WHERE EXTRACT(year FROM hire_date) = 1986
 ORDER BY emp_no;
 
 -- 3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
-SELECT  dept_manager.dep_no, departments.dept_name, dept_manager.emp_no, employee.last_name, employee.first _name
-		FROM dept_manager
-JOIN
-
-
+SELECT  dept_manager.dept_no, departments.dept_name, dept_manager.emp_no, employees.last_name, employees.first_name
+		FROM departments
+		JOIN dept_manager ON departments.dept_no = dept_manager.dept_no
+		JOIN employees
+		ON dept_manager.emp_no = employees.emp_no
+		ORDER BY last_name DESC
+		
 -- 4. List the department of each employee with the following information: employee number, last name, first name, and department name.
 SELECT employees.emp_no, employees.last_name, employees.first_name, departments.dept_name
 		FROM employees
@@ -34,8 +36,14 @@ SELECT first_name, last_name, sex
 		
 		
 -- 6. List all employees in the Sales department, including their employee number, last name, first name, and department name.
-
+SELECT employees.emp_no, employees.last_name, employees.first_name, departments.dept_name 
+		FROM employees
+		JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
 		
+		JOIN departments ON
+		dept_emp.emp_no = departments.dept_no
+		WHERE dept_name = 'Sales';
+
 -- 7. List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
 
 
