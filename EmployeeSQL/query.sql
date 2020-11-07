@@ -39,13 +39,20 @@ SELECT first_name, last_name, sex
 SELECT employees.emp_no, employees.last_name, employees.first_name, departments.dept_name 
 		FROM employees
 		JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
+		JOIN departments 
+		ON dept_emp.dept_no = departments.dept_no
+		WHERE departments.dept_name = 'Sales';
 		
-		JOIN departments ON
-		dept_emp.emp_no = departments.dept_no
-		WHERE dept_name = 'Sales';
-
 -- 7. List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
-
+SELECT employees.emp_no, employees.last_name, employees.first_name, departments.dept_name 
+		FROM employees
+		JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
+		JOIN departments 
+		ON dept_emp.dept_no = departments.dept_no
+		WHERE departments.dept_name in ('Sales', 'Development')
+		--WHERE departments.dept_name = 'Sales'
+		--OR departments.dept_name = 'Developement'
+		ORDER BY dept_name 
 
 
 
