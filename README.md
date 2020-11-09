@@ -1,4 +1,4 @@
- Employee Database: A Mystery in Two Parts
+## Employee Database: A Mystery in Two Parts
 
 
 ## Instructions
